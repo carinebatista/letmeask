@@ -1,11 +1,10 @@
 import firebase from 'firebase';
-import {createContext, useState} from 'react'
+import {createContext, useState, useEffect} from 'react'
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import { Home } from "./pages/Home";
 import { NewRoom } from "./pages/NewRoom";
 import { auth } from './services/firebase';
-
 
 type User ={
   id: string, 
@@ -15,33 +14,50 @@ type User ={
 
 type AuthContextType={
   user: User | undefined;
-  singInWithGoogle: () => void;
+  singInWithGoogle: () => Promise<void>;
 }
-
 
 export const AuthContext = createContext({} as AuthContextType)
 
 function App() {
   const [user, setUser] = useState<User>()
 
-  function singInWithGoogle(){
-    const provider = new firebase.auth.GoogleAuthProvider()
-
-		auth.signInWithPopup(provider).then(result => {
-		  if(result.user){
-        const {displayName, photoURL, uid} = result.user
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if( user){
+        const {displayName, photoURL, uid} = user
 
         if(!displayName || !photoURL){
-          throw new Error('Missing information from Google Account')
+         throw new Error('Missing information from Google Account')
         }
+   
+       setUser({
+         id: uid,
+         name: displayName,
+         avatar: photoURL
+         })
+        }
+      })
+    }, [])
 
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL
-        })
-      }
-		})
+  async function singInWithGoogle(){
+    const provider = new firebase.auth.GoogleAuthProvider()
+
+    const result = await auth.signInWithPopup(provider)
+    
+    if(result.user){
+      const {displayName, photoURL, uid} = result.user
+
+     if(!displayName || !photoURL){
+      throw new Error('Missing information from Google Account')
+     }
+
+    setUser({
+      id: uid,
+      name: displayName,
+      avatar: photoURL
+      })
+    }
   }
 
   return (
