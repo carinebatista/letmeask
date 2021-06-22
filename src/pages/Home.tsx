@@ -5,14 +5,11 @@ import '../styles/auth.scss'
 import { Button } from '../components/Button'
 
 import {useHistory} from 'react-router-dom'
-import { useContext } from 'react'
-import { AuthContext } from '../App'
-
+import { useAuth } from '../hooks/useAuth'
 
 export function Home(){
 	const history = useHistory()
-	const {user, singInWithGoogle} = useContext(AuthContext)
-
+	const {user, singInWithGoogle} = useAuth()
 
 	async function handleCreateRoom(){
 		if(!user){
