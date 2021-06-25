@@ -15,6 +15,12 @@
 
     padding: 120px 80px;
 
+
+      @media (max-width: 880px) {
+        display: none;
+      }
+    
+
     img{
       max-width: 320px;
     }
@@ -137,3 +143,5 @@
     margin-left: 16px;
   }
 }
+
+
