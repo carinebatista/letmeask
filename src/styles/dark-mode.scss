@@ -1,0 +1,70 @@
+
+.darkMode{
+  position: fixed;
+  right: 3rem;
+  top: 3rem;
+}
+
+.switch {
+  display: flex;
+  height: 36px;
+  position: relative;
+  width: 70px;
+    
+  input {
+    display:none;
+  }
+}
+
+.slider {
+  background-color: #FFF;
+  border:1px solid #835afd;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+   
+  &:before {
+  background-color: #835afd;
+  border:1px solid #835afd;
+  bottom: 3px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+  z-index:421;
+  }
+}
+
+input:checked + .slider {
+  background-color: #835afd;
+}
+
+input:checked + .slider:before {
+  transform: translateX(34px);
+  border-color:#CFCFCF;
+  background-color:#EFEFEF;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.toggle-moon, .toggle-sun {
+  width:50%;
+  text-align:center;
+  padding:0.25em;
+  position:relative;
+  z-index:420;
+}
+
+

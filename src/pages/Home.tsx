@@ -2,17 +2,21 @@ import ilustrationImg from '../assets/images/ilustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 import '../styles/auth.scss'
+import '../styles/dark-mode.scss'
 import { Button } from '../components/Button'
 
 import {useHistory} from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { database } from '../services/firebase'
+import { useTheme } from '../hooks/useTheme'
 
 export function Home(){
 	const history = useHistory()
 	const {user, singInWithGoogle} = useAuth()
 	const [roomCode, setRoomCode] = useState('')
+
+	const {theme, toggleTheme } = useTheme()
 
 	async function handleCreateRoom(){
 		if(!user){
@@ -45,12 +49,21 @@ export function Home(){
 
 
 	return(
-		<div id="page-auth">
+		<div id="page-auth" className={theme}>
 			<aside>
 				<img src={ilustrationImg} alt="ilustração simbolizando perguntas e respostas"/>
-				<strong>Crie salas de Q&amp;A ao-vivo</strong>
+				<strong className={theme}>Crie salas de Q&amp;A ao-vivo</strong>
 				<p> Tire as dúvidas da sua audiência em tempo-real </p>
 			</aside>
+			
+			<div className="darkMode">
+				<label className="switch" htmlFor="checkbox" title="Change color scheme to dark mode">
+					<input type="checkbox" onClick={toggleTheme} id="checkbox" />
+					<div className="slider round"></div>
+					<div className="toggle-moon">🌙</div>
+					<div className="toggle-sun">☀️</div>
+				</label>
+			</div>
 			<main>
 				<div className="main-content">
 					<img src={logoImg} alt="Letmeask"/>
