@@ -1,23 +1,30 @@
-# Let Me Ask! 
 
-This project was bootstrapped with Create React App
+<h1 align="center">
+  <img alt="letMeAsk" title="podcastr" src="src/assets/images/logo.svg" />
+</h1>
 
-## Scripts
+## ✨ Technologies
 
-In the project directory, you can run:
+This Project was built using the following Technologies:
 
-### `npm start`
+- [React](https://reactjs.org)
+- [TypeScript](https://www.typescriptlang.org/)
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 💻 Project
+
+Let me Ask is a project created to manage live question rooms in Streamings, answer your audience's doubts in real time!
 
 
-### `npm test`
+## 🚀 How it Runs?
 
-Launches the test runner in the interactive watch mode.\
+- Clone this Repo
+- Install the dependencies with `npm install`
+- Run the server with `npm start`
 
-### `npm build`
+You can open [`localhost:3000`](http://localhost:3000) to view it in the browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📄 License
 
-This app was build in The Next Level Week 6th Edition 
+This project is under the MIT license. See [LICENSE](LICENSE.md) for more details
+
+
