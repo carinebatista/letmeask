@@ -2,8 +2,8 @@ import logoImg from '../assets/images/logo.svg'
 import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
 import '../styles/room.scss'
-import { useParams } from 'react-router-dom'
-import { FormEvent, useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
+import { FormEvent, useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { database } from '../services/firebase'
 import { Question } from '../components/Question/'
@@ -14,12 +14,19 @@ type RoomParams={
 }
 
 export function Room(){
+   const {user} = useAuth()
   const params = useParams<RoomParams>()
+  const history = useHistory()
   const roomId = params.id
   const[newQuestion, setNewQuestion] = useState('')
-  const {user} = useAuth()
-  
   const { title, questions} = useRoom(roomId)
+
+  useEffect(() => {
+    if(!user) {
+      history.push('/')
+    }
+  }, [user, history])
+
 
   async function handleSendQuestion(event: FormEvent){
     event.preventDefault()

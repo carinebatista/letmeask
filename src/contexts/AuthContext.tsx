@@ -1,6 +1,7 @@
 import firebase from "firebase"
 import { ReactNode, createContext, useState, useEffect } from "react"
 import { auth } from "../services/firebase"
+import './style.scss'
 
 type User ={
   id: string, 
@@ -21,6 +22,7 @@ export const AuthContext = createContext({} as AuthContextType)
 
 export function AuthContextProvider(props: AuthContextProviderProps){
   const [user, setUser] = useState<User>()
+  const [loading, setLoading] =useState(true)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -37,6 +39,7 @@ export function AuthContextProvider(props: AuthContextProviderProps){
         avatar: photoURL
         })
         }
+        setLoading(false )
       })
 
       return () => {
@@ -62,6 +65,9 @@ export function AuthContextProvider(props: AuthContextProviderProps){
       avatar: photoURL
       })
     }
+  }
+  if(loading){
+    return <div className="bg-load"> <div className="loading"></div> </div>
   }
 
 
