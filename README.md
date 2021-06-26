@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <img alt="letMeAsk" title="podcastr" src="src/assets/images/logo.svg" />
+  <img alt="letMeAsk" title="Let Me Ask!" src="src/assets/images/logo.svg" />
 </h1>
 
 You can see this project running in Production here: [Let Me Ask](https://letmeask-47f90.web.app/)
