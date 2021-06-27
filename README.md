@@ -1,13 +1,16 @@
 
 <h1 align="center">
-  <img alt="letMeAsk" title="podcastr" src="src/assets/images/logo.svg" />
+  <img alt="letMeAsk" title="Let Me Ask!" src="src/assets/images/logo.svg" />
 </h1>
+
+You can see this project running in Production here: [Let Me Ask](https://letmeask-47f90.web.app/)
 
 ## ✨ Technologies
 
 This Project was built using the following Technologies:
 
 - [React](https://reactjs.org)
+- [Firebase](https://firebase.google.com/?gclsrc=ds&gclsrc=ds&gclid=CL6Lw7eKtvECFfDMxQodiXoJlg)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## 💻 Project
